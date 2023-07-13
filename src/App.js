@@ -12,8 +12,9 @@ function App() {
         <Routes>
           <Route path='/' element={<CarsList/>}/>
           <Route path='/cardetails/:id'element={<Cardetails/>}/>
+          
           {/* <Route path='/hotelDetails/:id'element={<HotelDetails/>}/> */}
-          <Route path='/confirmation'element={<Confirmation/>}/>
+          <Route path='/confirmation/:id'element={<Confirmation/>}/>
           <Route path='/thanks'element={<Thanksyou/>}/>
       
         </Routes>

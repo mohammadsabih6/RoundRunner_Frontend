@@ -13,7 +13,7 @@ const Cars = ({ item }) => {
       </Link>
       <p>{item.short_desc}</p>
       <p>Rs: {item.rental_fee}</p>
-      <Link to='/confirmation'>
+      <Link to={`/confirmation/${item.id}`}>
           <button style={{ padding: '15px', fontSize: '1rem', borderRadius: '10px', marginBottom: '15px' }}>Book My Rental</button>
         </Link>
     </Card>

@@ -1,13 +1,15 @@
 import { Checkbox } from "@material-ui/core";
-import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate,useParams } from "react-router-dom";
+import Card from '@material-ui/core/Card';
 
 const Confirmation = () => {
+    const { id } = useParams()
     const navigate=useNavigate();
   const location = useLocation();
-  const { state } = location;
-  const rental_fee = state ? state.rental_fee : null;
+
   const [check, setcheck] = useState(false);
+  const [selected,setSelect]=useState("");
   const [formdata, setformdata] = useState({
     name: "",
     address: "",
@@ -19,7 +21,15 @@ const Confirmation = () => {
     insurance: "",
     totalamounts: "",
   });
+//   const roundedNumber = calculateinsurance().toFixed(0);
+//   console.log(roundedNumber)
 
+useEffect(() => {
+    fetch(`http://localhost:8080/cars/get/${id}`)
+      .then((response) => response.json())
+      .then((data) => setSelect(data))
+      .catch((error) => console.log(error));
+  }, []);
   const handlesubmit = (event) => {
     setformdata({ ...formdata, [event.target.name]: event.target.value });
   };
@@ -27,7 +37,7 @@ const Confirmation = () => {
     setcheck(e.target.checked);
   };
   const calculateinsurance=()=>{
-    const perdayrent = rental_fee;
+    const perdayrent = selected.rental_fee;
         const startdate = new Date(pickdate);
         const enddate = new Date(dropdate);
         const totalrentaldays = (enddate - startdate) / (1000 * 60 * 60 * 24);
@@ -36,7 +46,7 @@ const Confirmation = () => {
   }
   const calculatetotalrantaldays = () => {
     if (check === true) {
-        const perdayrent = rental_fee;
+        const perdayrent = selected.rental_fee;
         const startdate = new Date(pickdate);
         const enddate = new Date(dropdate);
         const totalrentaldays = (enddate - startdate) / (1000 * 60 * 60 * 24);
@@ -45,7 +55,7 @@ const Confirmation = () => {
         console.log("total ======",totalwithdamage);
         return (totalwithdamage); 
     } else {
-        const perdayrent = rental_fee;
+        const perdayrent = selected.rental_fee;
         const startdate = new Date(pickdate);
         const enddate = new Date(dropdate);
         const totalrentaldays = (enddate - startdate) / (1000 * 60 * 60 * 24);
@@ -75,7 +85,7 @@ const Confirmation = () => {
     driver_licences: formdata.driver_licences,
     pickdate: formdata.pickdate,
     dropdate: formdata.dropdate,
-    rental_price: rental_fee,
+    rental_price: selected.rental_fee,
     insurance: calculateinsurance(),
     totalamount: calculatetotalrantaldays(),
   };
@@ -89,10 +99,9 @@ const Confirmation = () => {
   })
     .then((response) => response.json())
     .then((response) => {
-        if(response.ok){
             console.log("Confirmed ", response);
+            localStorage.setItem("data", JSON.stringify(data));
             navigate("/thanks")  
-        }
     });
 };
 
@@ -100,7 +109,16 @@ const Confirmation = () => {
   return (
     <div>
       <h1>Confirmation</h1>
-      <form onSubmit={submit}>
+      <Card style={{width:"30%",height:"20%",marginLeft:'35%', boxShadow: '10px 8px 6px 10px rgba(0, 0, 0, 0.1)',margin:"30px",borderRadius:"30px"}}>
+        {/* <h1>Hotel</h1> */}
+      <img style={{width:'100%',height:'30%'}}src={selected.image_link} alt='car Image'/>
+      {/* <Link to={`/cardetails/${item.id}`}> */}
+      <p><strong>{selected.name}</strong></p>
+      <p>{selected.short_desc}</p>
+      <p>Rs: {selected.rental_fee}</p>
+      
+    </Card>
+      <form  onSubmit={submit}>
         <label>Name</label>
         <br />
         <input type="text" name="name" value={name} onChange={handlesubmit} />
@@ -135,7 +153,7 @@ const Confirmation = () => {
         <input
           type="text"
           name="rental_fee"
-          value={rental_fee}
+          value={selected.rental_fee}
           onChange={handlesubmit}
         />
         <br />
@@ -154,7 +172,7 @@ const Confirmation = () => {
         <label>Pick Date</label>
         <br />
         <input
-          type="date"
+          type="datetime-local"
           name="pickdate"
           value={pickdate}
           onChange={handlesubmit}
@@ -163,7 +181,7 @@ const Confirmation = () => {
         <label>Drop Date</label>
         <br />
         <input
-          type="date"
+          type="datetime-local"
           name="dropdate"
           value={dropdate}
           onChange={handlesubmit}
