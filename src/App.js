@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
+
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import CarsList from './components/CarsList';
 import Cardetails from './components/Cardetails';
@@ -12,8 +11,6 @@ function App() {
         <Routes>
           <Route path='/' element={<CarsList/>}/>
           <Route path='/cardetails/:id'element={<Cardetails/>}/>
-          
-          {/* <Route path='/hotelDetails/:id'element={<HotelDetails/>}/> */}
           <Route path='/confirmation/:id'element={<Confirmation/>}/>
           <Route path='/thanks'element={<Thanksyou/>}/>
       

@@ -10,7 +10,6 @@ const CarsList=()=> {
         .then((response) => response.json())
         .then((data) => setcarslist(data))
         console.log(carslist)
-        // .catch((error) => console.error('Error: ', error));
       } , []);
     console.log(carslist)
     const data = Array.isArray(carslist) && carslist.length > 0
@@ -26,7 +25,7 @@ const CarsList=()=> {
         backgroundAttachment:'fixed',
         height: '150%'
     }}>
-        <h1 style={{color:"white" ,fontSize:'5rem',marginTop:'rem'}}>Rental Cars Services</h1>{data}</div>
+        <h1 style={{color:"white" ,fontSize:'5rem',marginTop:'rem'}} data-testId="heading">Rental Cars Services</h1>{data}</div>
 
   )
 }

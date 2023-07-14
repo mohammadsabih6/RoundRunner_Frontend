@@ -12,8 +12,6 @@ describe("Confirmation", () => {
     });
         test('renders the form fields', () => {
           render(<MemoryRouter><Confirmation /></MemoryRouter>);
-          
-          // Find form fields by their labels and check if they are in the document
           expect(screen.getByTestId("name")).toBeInTheDocument();
           expect(screen.getByTestId("phone")).toBeInTheDocument();
           expect(screen.getByTestId("address")).toBeInTheDocument();
