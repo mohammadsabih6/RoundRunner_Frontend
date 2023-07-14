@@ -134,12 +134,12 @@ const Confirmation = () => {
         <form className={styles.form} onSubmit={submit}>
           <label>Name</label>
           <br />
-          <input type="text" name="name" value={formdata.name} onChange={handlesubmit} />
+          <input type="text" name="name" data-testid="name" value={formdata.name} onChange={handlesubmit} />
           <br />
           <br />
           <label>Phone</label>
           <br />
-          <input type="text" name="phone" value={formdata.phone} onChange={handlesubmit} />
+          <input type="text" name="phone" data-testid="phone" value={formdata.phone} onChange={handlesubmit} />
           <br />
           <br />
           <label>Address</label>
@@ -147,6 +147,7 @@ const Confirmation = () => {
           <input
             type="text"
             name="address"
+            data-testId="address"
             value={formdata.address}
             onChange={handlesubmit}
           />
@@ -157,6 +158,7 @@ const Confirmation = () => {
           <input
             type="text"
             name="driver_licences"
+            data-testId="driverLicences"
             value={formdata.driver_licences}
             onChange={handlesubmit}
           />
@@ -167,6 +169,7 @@ const Confirmation = () => {
           <input
             type="text"
             name="rental_fee"
+            data-testId="rental"
             value={selected.rental_fee}
             onChange={handlesubmit}
           />
@@ -177,6 +180,7 @@ const Confirmation = () => {
           <Checkbox
             type="checkbox"
             name="insurance"
+            data-testId="insurance"
             style={{ marginTop: "-3rem",width:'0rem', marginLeft: "2rem",backgroundColor:'white' }}
             value={calculateTotalRentalDays()}
             onChange={handleCheckbox}
@@ -187,6 +191,7 @@ const Confirmation = () => {
           <input
             type="datetime-local"
             name="pickdate"
+            data-testId="pickdate"
             value={formdata.pickdate}
             onChange={handlesubmit}
           />
@@ -196,6 +201,7 @@ const Confirmation = () => {
           <input
             type="datetime-local"
             name="dropdate"
+            data-testId="dropdate"
             value={formdata.dropdate}
             onChange={handlesubmit}
           />
@@ -206,6 +212,7 @@ const Confirmation = () => {
           <input
             type="text"
             name="insurance"
+            data-testId="insured"
             value={calculateInsurance()}
             onChange={handlesubmit}
           />
@@ -216,6 +223,7 @@ const Confirmation = () => {
           <input
             type="text"
             name="totalamount"
+            data-testId="totalamount"
             value={calculateTotalRentalDays()}
             onChange={handlesubmit}
             readOnly={true}
