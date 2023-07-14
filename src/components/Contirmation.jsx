@@ -7,7 +7,6 @@ import styles from "./confirmation.module.css";
 const Confirmation = () => {
   const { id } = useParams()
   const navigate = useNavigate();
-  const location = useLocation();
 
   const [check, setCheck] = useState(false);
   const [selected, setSelected] = useState("");
@@ -74,7 +73,6 @@ const Confirmation = () => {
       return totalwithoutdamage;
     }
   };
-
   const submit = (e) => {
     e.preventDefault();
     const data = {
@@ -88,7 +86,6 @@ const Confirmation = () => {
       insurance: calculateInsurance(),
       totalamount: calculateTotalRentalDays(),
     };
-
     fetch("http://localhost:8080/rental/add", {
       method: "POST",
       headers: {
@@ -103,11 +100,14 @@ const Confirmation = () => {
         navigate("/thanks")
       });
   };
-
   return (
-    <>
-      <h1>Confirmation</h1>
-      <div className="container">
+    <div style={{backgroundImage:`url("https://png.pngtree.com/thumb_back/fw800/background/20230519/pngtree-car-showroom-in-the-dark-lit-room-with-boxes-image_2601969.png")`,
+    backgroundSize: 'contain',
+        backgroundPosition: 'center',
+        backgroundAttachment:'fixed',
+        height: '150%'}}>
+      <h1 style={{color:'white',fontSize:'3rem',marginBottom:'01rem'}}>Confirmation</h1>
+      <div className={styles.container}>
         <Card
           style={{
             width: "30%",
@@ -127,6 +127,9 @@ const Confirmation = () => {
           </p>
           <p>{selected.short_desc}</p>
           <p>Rs: {selected.rental_fee}</p>
+          <Link to='/'>
+            <button style={{cursor:"pointer",color:'white',width:'25rem',height:'2.5rem',borderRadius:'10px',fontSize:'1.5rem',backgroundColor: '#007bff',marginBottom:'10px'}}>Change Another Car</button>
+          </Link>
         </Card>
         <form className={styles.form} onSubmit={submit}>
           <label>Name</label>
@@ -174,7 +177,7 @@ const Confirmation = () => {
           <Checkbox
             type="checkbox"
             name="insurance"
-            style={{ marginTop: "-3rem", marginLeft: "-15rem" }}
+            style={{ marginTop: "-3rem",width:'0rem', marginLeft: "2rem",backgroundColor:'white' }}
             value={calculateTotalRentalDays()}
             onChange={handleCheckbox}
           />
@@ -220,14 +223,11 @@ const Confirmation = () => {
           <br />
           <br/>
           <input type="submit" value="Submit" />
-          <Link to='/'>
-            <button style={{cursor:"pointer",color:'white',width:'25rem',height:'2.5rem',borderRadius:'10px',fontSize:'1.5rem',backgroundColor: '#007bff',marginBottom:'10px'}}>Change Another Car</button>
-          </Link>
+          
         </form>
 
       </div>
-    </>
+    </div>
   );
 };
-
 export default Confirmation;

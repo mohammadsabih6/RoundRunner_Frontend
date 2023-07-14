@@ -20,7 +20,7 @@ const Cardetails = () => {
 
   return (
     <div style={{
-        backgroundImage: 'url("https://c4.wallpaperflare.com/wallpaper/26/399/594/1920x1081-px-1967-mustang-fastback-car-drive-neon-retrowave-synthwave-vehicle-art-skyline-hd-art-wallpaper-preview.jpg")',
+        backgroundImage: 'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpEA8IGtSMZD1tStcSHHzDlOMC2hYiLpgHa0dCy7b9QVtQKVbv0dGHaWdclUP1iAHzBDc&usqp=CAU")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '150%'

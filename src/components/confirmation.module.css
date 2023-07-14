@@ -1,24 +1,20 @@
 .container{
     display: flex;
+    flex-direction: row;
+    margin-top: 10rem;
+    justify-content: space-between;
 }
 .form {
     display: flex;
     flex-direction: column;
     max-width: 400px;
-    margin-top: -34rem;
+    /* margin-top: -54rem; */
     margin: 0 auto;
   }
-  .confirmation_form__PpE5k {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin-top: -34rem;
-    /* margin: 0 auto; */
-}
-  
   .form label {
+    color: #fff;
     margin-bottom: 0.5rem;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
   }
   
@@ -40,3 +36,4 @@
   .form input[type="submit"]:hover {
     background-color: #0056b3;
   }
+  
