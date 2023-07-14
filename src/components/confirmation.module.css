@@ -1,0 +1,42 @@
+.container{
+    display: flex;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin-top: -34rem;
+    margin: 0 auto;
+  }
+  .confirmation_form__PpE5k {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin-top: -34rem;
+    /* margin: 0 auto; */
+}
+  
+  .form label {
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .form input {
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .form input[type="submit"]:hover {
+    background-color: #0056b3;
+  }

@@ -4,7 +4,6 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 
 const Cardetails = () => {
-  const navigate = useNavigate();
   const { id } = useParams();
   const [car, setCar] = useState(null);
 
@@ -15,27 +14,27 @@ const Cardetails = () => {
       .catch((error) => console.log(error));
   }, [id]);
 
-//   const handleBookRental = () => {
-//     if (car) {
-//       navigate("/confirmation", { state: { rental_fee: car.rental_fee } });
-//     }
-//   };
-
   if (car === null) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
-      <h1>Car Details</h1>
+    <div style={{
+        backgroundImage: 'url("https://c4.wallpaperflare.com/wallpaper/26/399/594/1920x1081-px-1967-mustang-fastback-car-drive-neon-retrowave-synthwave-vehicle-art-skyline-hd-art-wallpaper-preview.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '150%'
+      }}>
+      <h1 style={{color:'white' ,fontSize:'5rem' ,marginTop:'-2px'}}>Car Details</h1>
       <Card
         style={{
           width: "50%",
           height: "20%",
+        
           marginLeft: "30%",
           boxShadow: "10px 8px 6px 10px rgba(0, 0, 0, 0.1)",
           margin: "30px",
-          borderRadius: "30px",
+          borderRadius: "30px"
         }}
       >
         <img

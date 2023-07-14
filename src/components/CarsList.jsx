@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Cars from './Cars';
 
 const CarsList=()=> {
-    
+
     const [carslist,setcarslist]=useState([]);
 
     useEffect(() => {
@@ -20,7 +20,13 @@ const CarsList=()=> {
   : null;
   
   return (
-    <div><h1>CarsList</h1>{data}</div>
+    <div style={{backgroundImage:`url("https://c4.wallpaperflare.com/wallpaper/404/19/616/dark-car-vehicle-ford-wallpaper-preview.jpg")`,
+    backgroundSize: 'contain',
+        backgroundPosition: 'center',
+        backgroundAttachment:'fixed',
+        height: '150%'
+    }}>
+        <h1 style={{color:"white" ,fontSize:'5rem',marginTop:'rem'}}>Rental Cars Services</h1>{data}</div>
 
   )
 }

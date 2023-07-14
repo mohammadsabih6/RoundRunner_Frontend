@@ -3,11 +3,10 @@ import Card from '@material-ui/core/Card';
 import { Link } from 'react-router-dom';
 const Cars = ({ item }) => {
   return (
-    <>
-      <div>
+    <div >
+      <div >
     <Card style={{width:"30%",height:"20%",marginLeft:'35%', boxShadow: '10px 8px 6px 10px rgba(0, 0, 0, 0.1)',margin:"30px",borderRadius:"30px"}}>
-        {/* <h1>Hotel</h1> */}
-      <img style={{width:'100%',height:'30%'}}src={item.image_link} alt='Hotel Image'/>
+      <img style={{width:'100%',height:'30%'}}src={item.image_link} alt='Cars Images'/>
       <Link to={`/cardetails/${item.id}`}>
       <p><strong>{item.name}</strong></p>
       </Link>
@@ -18,7 +17,7 @@ const Cars = ({ item }) => {
         </Link>
     </Card>
     </div>
-    </>
+    </div>
   );
 };
 
